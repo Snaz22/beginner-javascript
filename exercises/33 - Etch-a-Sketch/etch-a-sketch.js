@@ -14,10 +14,13 @@ ctx.lineCap = 'round';
 ctx.lineWidth = MOVE_AMOUNT;
 ctx.strokeStyle = 'black';
 
-ctx.beginPath();
-ctx.moveTo(x, y);
-ctx.lineTo(x, y);
-ctx.stroke();
+function initCanvas() {
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x, y);
+  ctx.stroke();
+}
+initCanvas();
 
 function draw({ key }) {
   ctx.beginPath();
@@ -67,6 +70,7 @@ function clearCanvas() {
     },
     { once: true }
   );
+  initCanvas();
 }
 
 window.addEventListener('keydown', handleKey);
