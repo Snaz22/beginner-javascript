@@ -86,22 +86,59 @@
     */
 
     // Display all bun types with " or " - use join()
+    const bunString = buns.join(' or ');
+    const para = document.createElement('p');
+    para.textContent = bunString;
+    document.body.appendChild(para);
 
-    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
+    const food = 'hot dogs,hamburgers,sausages,corn';
+    const foodArray = food.split(',');
+    console.log(foodArray);
 
     // take the last item off toppings with pop()
+    const lastItem = toppings.pop();
+    console.log(lastItem);
     // add it back with push()
+    toppings.push(lastItem);
+    console.log(toppings);
     // take the first item off toppings with shift()
+    const firstItem = toppings.shift();
+    console.log(firstItem);
     // add it back in with unshift()
+    toppings.unshift(firstItem);
     // Do the last four,but immutable (with spreads and new variables)
+    const lastTopping = toppings[toppings.length - 1];
+    let newToppings = toppings.slice(0, toppings.length - 1);
+    // console.log(newToppings);
+    newToppings = [...newToppings, lastTopping];
+    // console.log(newToppings);
+
+    const firstTopping = toppings[0];
+    newToppings = toppings.slice(1, toppings.length);
+    // console.log(newToppings);
+    newToppings = [firstTopping, ...newToppings];
+    console.log(newToppings);
 
     // Make a copy of the toppings array with slice()
+    const toppingsSlice = toppings.slice(0);
+    console.log('Slice', toppingsSlice);
     // Make a copy of the toppings array with a spread
+    const toppingsSpread = [...toppings];
+    console.log('Spread', toppingsSpread);
     // take out items 3 to 5 of your new toppings array with splice()
+    toppingsSlice.splice(2, 3);
+    console.log(toppingsSlice);
     // find the index of Avocado with indexOf() / lastIndexOf()
+    console.log('Avocado at index', toppingsSpread.indexOf('Avocado'));
     // Check if hot sauce is in the toppings with includes()
+    console.log('Hot sauce?', toppingsSpread.includes('Hot Sauce'));
     // add it if it's not
+    if (!toppingsSpread.includes('Hot Sauce')) {
+      toppingsSpread.push('Hot Sauce');
+    }
     // flip those toppings around with reverse()
+    toppingsSpread.reverse();
 
     /*
       Callback Methods
