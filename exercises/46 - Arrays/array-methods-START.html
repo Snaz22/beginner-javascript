@@ -86,10 +86,10 @@
     */
 
     // Display all bun types with " or " - use join()
-    const bunString = buns.join(' or ');
-    const para = document.createElement('p');
-    para.textContent = bunString;
-    document.body.appendChild(para);
+    // const bunString = buns.join(' or ');
+    // const para = document.createElement('p');
+    // para.textContent = bunString;
+    // document.body.appendChild(para);
 
     // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
     const food = 'hot dogs,hamburgers,sausages,corn';
@@ -145,15 +145,48 @@
     */
 
     // find the first rating that talks about a burger with find()
+
+    const burgRating = feedback.find((singleFeedback) =>
+      singleFeedback.comment.includes('burg')
+    );
+    console.log(burgRating);
     // find all ratings that are above 2 with filter()
+    function filterByMinRating(minRating) {
+      return function (singleFeedback) {
+        return singleFeedback.rating > minRating;
+      };
+    }
+    const ratingAboveTwo = feedback.filter(filterByMinRating(2));
+    console.log(ratingAboveTwo);
     // find all ratings that talk about a burger with filter()
+    const mentionBurg = feedback.filter((singleFeedback) =>
+      singleFeedback.comment.toLowerCase().includes('burg')
+    );
+    console.log(mentionBurg);
     // Remove the one star rating however you like!
+    const rermoveOneStars = feedback.filter((single) => single.rating !== 1);
+    console.table(rermoveOneStars);
 
     // check if there is at least 5 of one type of meat with some()
+    const atLeastFiveMeat = Object.values(meats).some(
+      (meatValue) => meatValue >= 5
+    );
+    console.log(atLeastFiveMeat);
     // make sure we have at least 3 of every meat with every()
+    const atLeastThreeEvery = Object.values(meats).every(
+      (meatValue) => meatValue >= 3
+    );
+    console.log(atLeastThreeEvery);
     // sort the toppings alphabetically with sort()
+    const sortedToppings = toppings.sort();
+    console.log(sortedToppings);
     // sort the order totals from most expensive to least with .sort()
+    const descendingOrderTotals = orderTotals.sort((a, b) => b - a);
+    console.log(descendingOrderTotals);
+
     // Sort the prices with sort()
+    const pricesSortedByPrice = Object.entries(prices).sort((a, b) => a[1] - b[1]);
+    console.table(Object.fromEntries(pricesSortedByPrice));
 
     /*
       Looping Methods (next)
