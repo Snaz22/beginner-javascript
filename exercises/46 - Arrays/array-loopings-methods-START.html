@@ -140,6 +140,12 @@
     */
 
     toppings.forEach((topping) => console.log(topping));
+    console.clear();
+
+    const taxRate = 0.15;
+
+    const ordersPlusTax = orderTotals.map((total) => total + total * taxRate);
+    console.log(ordersPlusTax);
   </script>
 </body>
 
